@@ -1,18 +1,16 @@
 #!/bin/sh
 set -e
 
-cd ~/.vim_runtime
+_dir=~/.config/vim
 
-echo 'set runtimepath+=~/.vim_runtime
+test -f ~/.vimrc && mv ~/.vimrc ~/.vimrc.bak
 
-source ~/.vim_runtime/vimrcs/basic.vim
-source ~/.vim_runtime/vimrcs/filetypes.vim
-source ~/.vim_runtime/vimrcs/plugins_config.vim
-source ~/.vim_runtime/vimrcs/extended.vim
+echo "set runtimepath+=$_dir
+source $_dir/vimrcs/basic.vim
+source $_dir/vimrcs/filetypes.vim
+source $_dir/vimrcs/plugins_config.vim
+source $_dir/vimrcs/extended.vim
+" > ~/.vimrc
 
-try
-source ~/.vim_runtime/my_configs.vim
-catch
-endtry' > ~/.vimrc
+unset _dir
 
-echo "Installed the Ultimate Vim configuration successfully! Enjoy :-)"
