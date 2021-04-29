@@ -85,9 +85,19 @@ let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=35
+
+" Open the existing NERDTree on each new tab
+autocmd BufWinEnter * silent NERDTreeMirror
+
+" Exit Vim if NERDTree is the only window left
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') &&
+    \ b:NERDTree.isTabTree() | quit | endif
+
+" Mappings
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
+map <C-b> :NERDTreeToggle<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -96,14 +106,14 @@ map <leader>nf :NERDTreeFind<cr>
 let g:multi_cursor_use_default_mapping=0
 
 " Default mapping
-let g:multi_cursor_start_word_key      = '<C-s>'
-let g:multi_cursor_select_all_word_key = '<A-s>'
-let g:multi_cursor_start_key           = 'g<C-s>'
-let g:multi_cursor_select_all_key      = 'g<A-s>'
-let g:multi_cursor_next_key            = '<C-s>'
+let g:multi_cursor_start_key           = '<C-n>'
+let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_select_all_key      = '<C-n>a'
 let g:multi_cursor_quit_key            = '<Esc>'
+let g:multi_cursor_start_word_key      = '<C-n>w'
+let g:multi_cursor_select_all_word_key = '<C-n>wa'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
