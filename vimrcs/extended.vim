@@ -35,8 +35,8 @@ colorscheme peaksea
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>e :e! ~/.vim_runtime/my_configs.vim<cr>
-autocmd! bufwritepost ~/.vim_runtime/my_configs.vim source ~/.vim_runtime/my_configs.vim
+map <leader>rc :e! ~/.config/vim/vimrcs/basic.vim<cr>
+autocmd! bufwritepost ~/.config/vim/vimrcs/* source ~/.vimrc
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -44,7 +44,7 @@ autocmd! bufwritepost ~/.vim_runtime/my_configs.vim source ~/.vim_runtime/my_con
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undodir=/.config/vim/temp_dirs/undodir
     set undofile
 catch
 endtry
@@ -80,20 +80,15 @@ imap ½ $
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a`<esc>`<i`<esc>
-
-" Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
+vnoremap ( <esc>`>a)<esc>`<i(<esc>
+vnoremap ) <Esc>`>a )<Esc>`<i( <Esc>
+vnoremap [ <esc>`>a]<esc>`<i[<esc>
+vnoremap ] <Esc>`>a ]<Esc>`<i[ <Esc>
+vnoremap { <esc>`>a}<esc>`<i{<esc>
+vnoremap } <Esc>`>a }<Esc>`<i{ <Esc>
+vnoremap " <esc>`>a"<esc>`<i"<esc>
+vnoremap ' <esc>`>a'<esc>`<i'<esc>
+vnoremap ` <esc>`>a`<esc>`<i`<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,13 +113,13 @@ if executable('ag')
 endif
 
 " When you press gv you Ack after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+vnoremap <silent> a :call VisualSelection('ack', '')<CR>
 
 " Open Ack and put the cursor in the right position
-map <leader>g :Ack 
+map <leader>a :Ack<Space>
 
 " When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+vnoremap <silent> r :call VisualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
