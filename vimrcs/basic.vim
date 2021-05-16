@@ -47,15 +47,14 @@ au FocusGained,BufEnter * checktime
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
-map < ,
+"nnoremap < ,
 
 " Save and exit
-nnoremap <leader>w :w!<CR>
-nnoremap <leader>W :w !sudo tee % > /dev/null<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>W :wq<CR>
+nnoremap <leader>sw :w !sudo tee % > /dev/null<CR>
 nnoremap q :q<CR>
-nnoremap Q :wq<CR>
-nnoremap qq :qa<CR>
-nnoremap <leader>qq :q!<CR>
+nnoremap Q :qa<CR>
 nnoremap <C-s> :w<CR>
 "nnoremap <C-S-s> :w<Space>
 nnoremap <C-q> :mks! ~/.wip.vim<CR>:wqa<CR>
@@ -212,7 +211,6 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 " Tabs
 nnoremap T :tabnew<CR>
-nnoremap A :tabnew<Space>
 nnoremap L :tabnext<CR>
 nnoremap H :tabprevious<CR>
 nnoremap W :tabclose<CR>
